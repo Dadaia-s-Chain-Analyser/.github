@@ -1,10 +1,6 @@
 # Dadaia-s-Chain-Analyser Organization
 
-Buch of repositories related with crawling blockchains compatible with EVM (Ethereum Virtual Machine) and Ingestion Tools it to a set of tools related with Data Engineering Tasks.
-
-### 1 - batch-contract-txs
-
-
+Buch of repositories related with crawling blockchains compatible with EVM (Ethereum Virtual Machine) and Ingestion Tools it to a set of tools related with Data Engineering Tasks. Follows a brief description about each one of those.
 
 ### 1 - Offchain Watchers
 
@@ -19,8 +15,12 @@ Getting the data directly from the smart contracts makes possible to  is possibl
 
 ### 3 - Onchain Actors
 
-This repo contains code neneeded to build a docker image that runs Solitidy and Python code, using also Brownie
-
+This repo contains code needed to build a docker image that runs Solitidy and Python code, using also `Brownie`. However, the services based on Onchain Actor images aims to really interact with the smart contracts, making transactions such as:
+- Putting ERC20 tokens as collateral in AAVE V2 and V3 protocols.
+- Borrow ERC20 tokens AAVE V2 and V3 protocols.
+- Execute Flash Loans using AAVE V2 and V3 protocols.
+- Swap ERC20 tokens using the UNISWAP protocols V2 and V3.
+- Execute some fuctionalities in ERC20 contracts.
 
 
 ### 4 - Apache Airflow

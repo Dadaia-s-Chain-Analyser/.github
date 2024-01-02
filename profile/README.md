@@ -1,6 +1,7 @@
 # Dadaia-s-Chain-Analyser Organization
 
-Buch of repositories related with crawling blockchains compatible with EVM (Ethereum Virtual Machine) and Ingestion Tools it to a set of tools related with Data Engineering Tasks. Follows a brief description about each one of those.
+Buch of repositories related with crawling blockchains compatible with EVM (Ethereum Virtual Machine) and Ingestion Tools it to a set of tools related with Data Engineering Tasks. 
+Each one of these repos were create separately because each one of them represents Docker Images and has its own deployment workflow. They had also different functionalities that can be combined to explore and analyse Blockchain Data, giving some insides about opportunities at this field and also providing data to monitor these networks. Follows a brief description about the mecioned repositories and its functionalities.
 
 ### 1 - Offchain Watchers
 

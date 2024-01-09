@@ -1,40 +1,24 @@
-# Dadaia-s-Chain-Analyser Organization
+# Organização Dadaia-s-Chain-Analyzer
 
-Buch of repositories related with crawling blockchains compatible with EVM (Ethereum Virtual Machine) and Ingestion Tools it to a set of tools related with Data Engineering Tasks. 
-Each one of these repos were create separately because each one of them represents Docker Images and has its own deployment workflow. They had also different functionalities that can be combined to explore and analyse Blockchain Data, giving some insides about opportunities at this field and also providing data to monitor these networks. Follows a brief description about the mecioned repositories and its functionalities.
+- Autor: Marco Aurelio Reis Lima Menezes
+- Posição: Engenheiro de Dados Pleno
+- Badge: Data Engineer Advanced
+- Empresa: F1rst Digital Service
 
-### 1 - Offchain Watchers
+## 1 - Introdução 
 
-This repo contains an docker image that runs python code (4 jobs) with the goal of get data from Blockchains using the library Web3.py and the Blockchain Node as a Service providers Infura and Alchemy. 
-The goal for this repo is work as a system that can ingest real time transactions from Blockchain networks EVM compatible, such as Ethereum, Polygon, Binance Smart Chain, Arbitrum, Avalanche, Fantom and others, minimizing the latency.
-The architecture for these 4 Jobs relies on Queue Services like Apache Kafka and it's designed in order to minimize the requests to the Blockchain Nodes.
+A organização `Dadaia-s-Chain-Analyzer` é um conjunto de repositórios criados com intuito de conceber um sistema para extrair e ingestar dados públicos de blockchains compatíveis com Ethereum Virtual Machine (EVM) em recursos nos quais seja possível processar esses dados e fornecer informações para aplicações voltadas ao mundo Blockchain, gerando assim insides para algumas oportunidades que esse tipo de arquitetura disponibiliza.
 
-### 2 - Onchain Watchers
+A decisão para segmentar o sistema nos repositórios listados abaixo foi motivada pelo fato de que cada os 4 primeiros são imagens docker e cada uma utiliza diferentes tipos de tecnologia, alterando o peso de cada imagem e também pela finalidade de cada uma. Já o último repositório contém os arquivos de definição yml usados para orquestar containers docker que compõem o sistema Chain-Analyzer.
 
-This repo contains an docker image that runs Solidity and Python code, using specially a framework called `Brownie` used to automate the and interaction with deployed smart contracts in Blockchain networks EVM compatible. This repo has the goal of get data from blockchains direct from it's smart contracts, differentiating it from Offchain Watchers that makes HTTP requests, acquiring the data from a centrilized source. Getting the data directly from the chain (that's why Onchain) can be conceived as a decentralized manner (since the crawler has it's own node, not trusting in a Blockchain Node as a Service provider). 
-Getting the data directly from the smart contracts makes possible to  is possible to monitor important smart contracts, in this case AAVE Borrowing and Lending and UNISWAP Decentralized Exchange contracts.
+Cada um desses repositórios tem funcionalidades específicas que serão detalhadas a seguir.
 
-### 3 - Onchain Actors
+- **Offchain Watchers**: Conjunto de aplicações python que usam a biblioteca Web.py para fazer requisições a nós membros de determinado protocolo Blockchain EVM e obter informações como metadados de blocos minerados e dados de suas respectivas transações em tempo real. Os scripts desse repositório funcionam como producers e consumers de um Cluster Kafka para criar um streaming de dados eficiente e viável, dadas algumas restrições que serão exploradas mais detalhadamente a seguir.
 
-This repo contains code needed to build a docker image that runs Solitidy and Python code, using also `Brownie`. However, the services based on Onchain Actor images aims to really interact with the smart contracts, making transactions such as:
-- Putting ERC20 tokens as collateral in AAVE V2 and V3 protocols.
-- Borrow ERC20 tokens AAVE V2 and V3 protocols.
-- Execute Flash Loans using AAVE V2 and V3 protocols.
-- Swap ERC20 tokens using the UNISWAP protocols V2 and V3.
-- Execute some fuctionalities in ERC20 contracts.
+- **Onchain Watchers**: Conjunto de aplicações python que usam a biblioteca Web3.py e a framework brownie para `interagir diretamente com contratos inteligentes e obter dados` a partir de chamada de métodos desses contratos. Os scripts desse repositório interagem com 3 tipos de contratos relacionados com o universo DeFi.
 
+- **Onchain Actors**: Conjunto de aplicações python que usam a biblioteca Web3.py e a framework brownie para `interagir diretamente com contratos inteligentes e submeter transações` a partir da chamada de métodos desses contratos. Os scripts desse repositório interagem com 3 tipos de contratos relacionados com o universo DeFi.
 
-### 4 - Apache Airflow
+- **Apache Airflow**: Esse repositório é composto por uma imagem docker do serviço apache Airflow. Ele contém definições de DAGs de pipelines para executar rotinas na camada Batch. Esses Jobs possuem acesso a recurso de um Cluster Hadoop e também recursos da Azure.
 
-This repo contains a docker image for the Apache Airflow Service. The needs for this specific image is to copy the DAG definition to the docker image during a build. Using this strategy always some change is made on the DAGs, such as new Jobs added to a specific DAG, when commited to Github there is a Github Action (CI/CD tool to automate deploys semilar to Jenkins) that builds a new docker image version and then the Cluster of Docker Swarm can update the service Airflow to put effectively the changes in "Production".
-
-<!--
-
-**Here are some ideas to get you started:**
-
-🙋‍♀️ A short introduction - what is your organization all about?
-🌈 Contribution guidelines - how can the community get involved?
-👩‍💻 Useful resources - where can the community find your docs? Is there anything else the community should know?
-🍿 Fun facts - what does your team eat for breakfast?
-🧙 Remember, you can do mighty things with the power of [Markdown](https://docs.github.com/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
--->
+- **chain-analyzer-services**: Repositório com definições de para orquestração de containers que juntos compõe o sistema Chain-Analyser.
